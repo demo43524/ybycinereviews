@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Star, Calendar, Clock, Play, Heart, Share2, Bookmark } from 'lucide-react';
 import { Movie } from '../types/movie';
 import { movieService } from '../services/movieService';
+import { AdBanner } from './AdBanner';
 
 interface MovieModalProps {
   movie: Movie | null;
@@ -177,6 +178,16 @@ export const MovieModal: React.FC<MovieModalProps> = ({ movie, isOpen, onClose }
               {activeTab === 'overview' && (
                 <div>
                   <p className="text-gray-700 leading-relaxed mb-6">{movie.overview}</p>
+                  
+                  {/* In-modal Ad */}
+                  <div className="my-6 bg-gray-50 rounded-lg p-4">
+                    <p className="text-xs text-gray-500 mb-2 text-center">Advertisement</p>
+                    <AdBanner
+                      adSlot="1234567894"
+                      style={{ display: 'block', width: '100%', height: '200px' }}
+                      className="mx-auto"
+                    />
+                  </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
